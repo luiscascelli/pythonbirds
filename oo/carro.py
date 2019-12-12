@@ -1,4 +1,4 @@
-class Motor():
+class Motor:
 
     def __init__(self, velocidade = 0):
         self.velocidade = velocidade
@@ -7,13 +7,11 @@ class Motor():
         self.velocidade +=1
 
     def frear(self):
-        if self.velocidade <= 1:
-            self.velocidade = 0
-        else:
-            self.velocidade -= 1
+        self.velocidade -= 2
+        self.velocidade = max(0,self.velocidade)
     pass
 
-class Direcao():
+class Direcao:
 
     def __init__(self, valor = 'Norte'):
             self.valor = valor
@@ -21,39 +19,36 @@ class Direcao():
     def girar_direita(self):
         direcoes = ['Norte','Leste','Sul','Oeste']
         i = direcoes.index(self.valor)
-        if self.valor == direcoes[3]:
-            self.valor = direcoes[0]
-        else:
-            self.valor = direcoes[i + 1]
+        self.valor = direcoes[(i+1)%4]
 
     def girar_esquerda(self):
         direcoes = ['Norte', 'Leste', 'Sul', 'Oeste']
         i = direcoes.index(self.valor)
-        if self.valor == direcoes[0]:
-            self.valor = direcoes[3]
-        else:
-            self.valor = direcoes[i-1]
+        self.valor = direcoes[(i-1)%4]
 
+
+class Carro:
+
+    def __init__(self, motor = None, direcao = None):
+        self.motor = motor
+        self.direcao = direcao
+
+    def calc_vel(self):
+        return self.motor.velocidade
+
+    def acelerar(self):
+        self.motor.acelerar()
+
+    def frear(self):
+        self.motor.frear()
+
+    def calc_dir(self):
+        return self.direcao.valor
+
+    def virar_direita(self):
+        self.direcao.girar_direita()
+
+    def virar_esquerda(self):
+        self.direcao.girar_esquerda()
 
     pass
-if __name__ == '__main__':
-    o = Direcao()
-    print (o.valor)
-    o.girar_direita()
-    print(o.valor)
-    o.girar_direita()
-    print(o.valor)
-    o.girar_direita()
-    print(o.valor)
-    o.girar_direita()
-    print(o.valor)
-    o.girar_esquerda()
-    print(o.valor)
-    o.girar_esquerda()
-    print(o.valor)
-    o.girar_esquerda()
-    print(o.valor)
-    o.girar_esquerda()
-    print(o.valor)
-    o.girar_esquerda()
-    print(o.valor)
