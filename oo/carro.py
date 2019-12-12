@@ -1,4 +1,5 @@
 class Motor():
+
     def __init__(self, velocidade = 0):
         self.velocidade = velocidade
 
@@ -13,21 +14,46 @@ class Motor():
     pass
 
 class Direcao():
-    direcoes = ['Norte','Leste','Sul','Oeste']
 
-    def __init__(self, valor = direcoes[0]):
-        self.valor = valor
+    def __init__(self, valor = 'Norte'):
+            self.valor = valor
 
     def girar_direita(self):
-        if
+        direcoes = ['Norte','Leste','Sul','Oeste']
+        i = direcoes.index(self.valor)
+        if self.valor == direcoes[3]:
+            self.valor = direcoes[0]
+        else:
+            self.valor = direcoes[i + 1]
 
+    def girar_esquerda(self):
+        direcoes = ['Norte', 'Leste', 'Sul', 'Oeste']
+        i = direcoes.index(self.valor)
+        if self.valor == direcoes[0]:
+            self.valor = direcoes[3]
+        else:
+            self.valor = direcoes[i-1]
 
 
     pass
 if __name__ == '__main__':
-    o = Motor()
-    print (o.velocidade)
-    o.acelerar()
-    print(o.velocidade)
-    o.frear()
-    print (o.velocidade)
+    o = Direcao()
+    print (o.valor)
+    o.girar_direita()
+    print(o.valor)
+    o.girar_direita()
+    print(o.valor)
+    o.girar_direita()
+    print(o.valor)
+    o.girar_direita()
+    print(o.valor)
+    o.girar_esquerda()
+    print(o.valor)
+    o.girar_esquerda()
+    print(o.valor)
+    o.girar_esquerda()
+    print(o.valor)
+    o.girar_esquerda()
+    print(o.valor)
+    o.girar_esquerda()
+    print(o.valor)
