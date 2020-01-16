@@ -12,19 +12,18 @@ class Motor:
     pass
 
 class Direcao:
+    direcoes = ['Norte','Leste','Sul','Oeste']
 
     def __init__(self, valor = 'Norte'):
             self.valor = valor
 
     def girar_direita(self):
-        direcoes = ['Norte','Leste','Sul','Oeste']
-        i = direcoes.index(self.valor)
-        self.valor = direcoes[(i+1)%4]
+        i = self.direcoes.index(self.valor)
+        self.valor = self.direcoes[(i+1)%4]
 
     def girar_esquerda(self):
-        direcoes = ['Norte', 'Leste', 'Sul', 'Oeste']
-        i = direcoes.index(self.valor)
-        self.valor = direcoes[(i-1)%4]
+        i = self.direcoes.index(self.valor)
+        self.valor = self.direcoes[(i-1)%4]
 
 
 class Carro:
